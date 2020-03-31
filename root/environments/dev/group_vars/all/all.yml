@@ -1,0 +1,13 @@
+###############################################################################
+# Ansible Config
+#ansible_python_interpreter: /usr/bin/python3
+ansible_host:         localhost
+ansible_become:       yes
+ansible_user:         vagrant 
+ansible_become_pass:  "{{vault_ansible_become_pass}}"
+ansible_port:         "{{sshport}}"
+
+###############################################################################
+# General Config
+admin_user:           admin                           # Administration user for all hosts
+admin_password:       "{{vault_admin_password}}"      # Admin user password

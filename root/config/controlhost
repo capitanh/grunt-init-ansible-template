@@ -1,0 +1,19 @@
+---
+vb_name:        controlhost
+vb_memory:      2048
+vb_cpus:        2
+box_name:       centos/7
+#box_name:       ubuntu/bionic64
+host_name:      controlhost.biab.pl.ing.net
+locale_lc_all:  en_US.UTF-8
+locale_lang:    en_US.UTF-8
+roles_path:     ~/.ansible/roles
+sshport:        2222
+ip:             192.168.2.2
+ports:
+#- guestPort:  8153    # Go.cd server web ui
+#  hostPort:   8153
+#- guestPort:  8154    # Go.cd server listen por for agents
+#  hostPort:   8154
+- guestPort:  9090    # Rapid deploy
+  hostPort:   9090    

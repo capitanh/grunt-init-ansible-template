@@ -1,0 +1,9 @@
+- src: capitanh.common_ansible_role
+- src: capitanh.rapiddeploy_ansible_role
+- src: capitanh.openldap-ansible-role
+- src: capitanh.oraclejdk-ansible-role
+- src: capitanh.gocd-ansible-role
+- src: capitanh.goagent-ansible-role
+- src: capitanh.oraclexe-ansible-role
+- src: capitanh.wildfly-ansible-role
+- src: capitanh.nexus-ansible-role
