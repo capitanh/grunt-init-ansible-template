@@ -5,7 +5,3 @@
 # ansible-playbook -i environments/dev.inv site.yml                           #
 ###############################################################################
 - import_playbook: playbooks/common.yml
-- import_playbook: playbooks/controlhost.yml
-- import_playbook: playbooks/coredb.yml
-- import_playbook: playbooks/jboss3.yml
-- import_playbook: playbooks/mocker.yml
