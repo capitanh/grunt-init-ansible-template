@@ -6,7 +6,7 @@ Use this grunt template as a scaffold to jumpstart your ansible playbooks
 ## Usage
 Download this repo inside your ~/.grunt-init/ directory
 ```
-git clone https://github.com/capitanh/grunt-init-ansible ~/.grunt-init/ansible-playbook
+git clone https://github.com/capitanh/grunt-init-ansible-template.git ~/.grunt-init/ansible-playbook
 ```
 Create a folder for your new ansible playbook folder and cd into it
 ```
