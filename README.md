@@ -17,4 +17,3 @@ Run grunt to generate the project scaffold
 ```
 grunt-init ansible-playbook
 ```
-
