@@ -1,4 +1,4 @@
-# Master ansible playbook
+# {%= name %} Master ansible playbook
 
 ## Description
 

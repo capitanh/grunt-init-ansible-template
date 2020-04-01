@@ -1,6 +1,6 @@
 ---
 ###############################################################################
-# My project ansible master playbook                                          #
+# {%= name %} ansible master playbook                                          #
 # Usage:                                                                      #
 # ansible-playbook -i environments/dev.inv site.yml                           #
 ###############################################################################
