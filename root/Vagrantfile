@@ -1,41 +1,21 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-require 'yaml'
 Vagrant.configure(2) do |config|
+  config.vm.box = '{%= box %}'
+  config.vm.hostname = '{%= hostname %}.{%= domain %}'
+  config.vm.network 'forwarded_port', guest: 9443, host: 9443
+  config.vm.network 'forwarded_port', guest: 9763, host: 9763
+  config.vm.provider 'virtualbox' do |vb|
+    vb.name = '{%= vbname %}'
+    vb.memory = 2048
+    vb.cpus = 2
+    vb.gui = false
+  end
 
-  boxes = [
-    'scmserver',
-    'controlhost',
-    'coredb',
-    'jboss3',
-    'mocker'
-  ]
-  boxes.each do |boxhost|
-    settings = YAML.load_file("config/#{boxhost}.yml")
-    config.vm.define "#{boxhost}" do |host|
-      host.vm.box = settings['box_name']
-      host.vm.hostname = settings['host_name']
-      host.vm.network "private_network", ip: settings['ip'], virtualbox__intnet: true
-      host.vm.network :forwarded_port, guest: 22, host: settings['sshport'], id: "ssh"
-      ports = settings['ports']
-      ports.each do |forwarded_port|
-        config.vm.network "forwarded_port", guest: forwarded_port['guestPort'], host: forwarded_port['hostPort']
-      end
-      host.vm.provider "virtualbox" do |vb|
-        vb.memory = settings['vb_memory']
-        vb.cpus = settings['vb_cpus']
-        vb.gui = false
-        vb.default_nic_type = "82543GC"
-      end
-      host.vm.provision "ansible" do |ansible|
-        ansible.inventory_path = "environments/dev"
-        ansible.extra_vars = "config/#{boxhost}.yml"
-        ansible.compatibility_mode = "2.0"
-        ansible.playbook = "site.yml"
-        #ansible.verbose = "vvv"
-        ansible.galaxy_role_file = "requirements.yml"
-        ansible.galaxy_roles_path = '~/.ansible/roles'
-      end      
-    end
+  config.vm.provision 'ansible' do |ansible|
+    ansible.compatibility_mode = "2.0"
+    ansible.playbook = 'site.yml'
+    ansible.galaxy_role_file = 'requirements.yml'
+    ansible.galaxy_roles_path = '~/.ansible/roles'
   end
 end
