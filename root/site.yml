@@ -1,7 +1,9 @@
 ---
 ###############################################################################
-# {%= name %} ansible master playbook                                          #
+# {%= name %} ansible master playbook                                         #
 # Usage:                                                                      #
-# ansible-playbook -i environments/dev.inv site.yml                           #
+# vagrant up                                                                  #
 ###############################################################################
-- import_playbook: playbooks/common.yml
+- hosts: all
+  roles:
+    - capitanh.common_ansible_role

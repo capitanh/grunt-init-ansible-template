@@ -1,4 +1,0 @@
----
-- hosts: all
-  roles:
-    - capitanh.common_ansible_role
